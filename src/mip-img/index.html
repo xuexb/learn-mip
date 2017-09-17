@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html mip lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>mip-img</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://mipcache.bdstatic.com/static/v1/mip.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="canonical" href="https://xuexb.org/">
+    <style type="text/css" mip-custom>
+        h2 {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>mip-img</h1>
+    <p>
+        mip-img 用来支持在 mip 中增加图片内容。
+    </p>
+
+    <h2>基本版本</h2>
+    <mip-img
+        layout="responsive"
+        width="350"
+        height="300"
+        src="https://www.mipengine.org/static/img/sample_01.jpg">
+    </mip-img>
+
+    <h2>添加全屏查看图片</h2>
+    <mip-img
+        layout="responsive"
+        width="350"
+        height="300"
+        popup
+        src="https://www.mipengine.org/static/img/sample_01.jpg">
+    </mip-img>
+
+    <h2>fixed-height</h2>
+    <mip-img
+        layout="fixed-height"
+        height="300"
+        alt="baidu mip img"
+        src="https://www.mipengine.org/static/img/sample_01.jpg">
+    </mip-img>
+
+    <h2>fixed</h2>
+    <mip-img
+        layout="fixed"
+        width="300"
+        height="300"
+        alt="baidu mip img"
+        src="https://www.mipengine.org/static/img/sample_01.jpg">
+    </mip-img>
+
+    <h2>带标题</h2>
+    <mip-img
+        layout="responsive"
+        width="350"
+        height="300"
+        popup
+        alt="baidu mip img"
+        src="https://www.mipengine.org/static/img/sample_01.jpg">
+    </mip-img>
+    <p class="mip-img-subtitle">带图片标题的类型</p>
+
+    <hr>
+    <p>
+        testtesttesttesttesttesttesttesttesttesttesttesttesttest
+    </p>
+    <p>
+        testtesttesttesttesttesttesttesttesttesttesttesttesttest
+    </p>
+    <p>
+        testtesttesttesttesttesttesttesttesttesttesttesttesttest
+    </p>
+
+    <script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
+</body>
+</html>

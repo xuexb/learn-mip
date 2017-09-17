@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html mip lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>mip-carousel</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://mipcache.bdstatic.com/static/v1/mip.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="canonical" href="https://xuexb.org/">
+    <style type="text/css" mip-custom>
+        h2 {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>mip-carousel</h1>
+    <p>
+        mip-carousel 用来支持 mip 中图片的一种展示方式，支出多图轮播。
+    </p>
+
+    <h2>response 布局</h2>
+    <mip-carousel
+        layout="responsive"
+        width="600"
+        height="400">
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_01.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_02.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_03.jpg">
+        </mip-img>
+    </mip-carousel>
+
+    <h2>自动轮播</h2>
+    <mip-carousel
+        autoplay
+        layout="responsive"
+        width="600"
+        height="400">
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_01.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_02.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_03.jpg">
+        </mip-img>
+    </mip-carousel>
+
+    <h2>设置轮播时间间隔</h2>
+    <mip-carousel
+        autoplay
+        defer="1000"
+        layout="responsive"
+        width="600"
+        height="400">
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_01.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_02.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_03.jpg">
+        </mip-img>
+    </mip-carousel>
+
+    <h2>加数据指示器</h2>
+    <mip-carousel
+        autoplay
+        layout="responsive"
+        width="600"
+        height="400"
+        indicator>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_01.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_02.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_03.jpg">
+        </mip-img>
+    </mip-carousel>
+
+    <h2>自定义指示器</h2>
+    <mip-carousel
+        autoplay
+        layout="responsive"
+        width="600"
+        height="400"
+        indicator
+        indicatorId="mip-carousel-example">
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_01.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_02.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_03.jpg">
+        </mip-img>
+    </mip-carousel>
+    <div class="mip-carousel-indicator-wrapper">
+        <div class="mip-carousel-indicatorDot" id="mip-carousel-example">
+            <div class="mip-carousel-activeitem mip-carousel-indecator-item"></div>
+            <div class="mip-carousel-indecator-item"></div>
+            <div class="mip-carousel-indecator-item"></div>
+        </div>
+    </div>
+
+    <h2>加翻页按钮</h2>
+    <mip-carousel
+        layout="responsive"
+        width="600"
+        height="400"
+        indicator
+        buttonController>
+       <mip-img
+            src="https://www.mipengine.org/static/img/sample_01.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_02.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_03.jpg">
+        </mip-img>
+    </mip-carousel>
+
+    <h2>副标题</h2>
+    <mip-carousel
+        autoplay
+        layout="responsive"
+        width="600"
+        height="400"
+        indicator
+        buttonController>
+        <a target="_blank" href="https://mip.xuexb.com" data-type="mip">
+            <mip-img
+                src="https://www.mipengine.org/static/img/sample_01.jpg" layout="responsive"
+            width="600"
+            height="400">
+            </mip-img>
+            <div class="mip-carousle-subtitle">这里是title2</div>
+        </a>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_02.jpg">
+        </mip-img>
+        <mip-img
+            src="https://www.mipengine.org/static/img/sample_03.jpg">
+        </mip-img>
+    </mip-carousel>
+
+    <script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
+</body>
+</html>

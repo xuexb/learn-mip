@@ -76,12 +76,17 @@ getFiles('src/**/*.html')
 
         output.forEach(val => {
             val.errors.forEach(error => {
-                console.log(val.uri, ' => ', JSON.stringify(error, null, 2));
+                console.error(val.uri, ' => ', JSON.stringify(error, null, 2));
             });
         });
 
         if (!output.length) {
             console.log('非常棒, 没有错误!');
+        }
+
+        // 如果是CI则报错
+        else if (process.env.TRAVIS) {
+            process.exit(1);
         }
 
     })

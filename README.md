@@ -1,6 +1,9 @@
-# learn-mip/
+# learn-mip
 
 学习mip的例子
+
+[![mip](https://img.shields.io/badge/Thanks-MIP-brightgreen.svg)](https://www.mipengine.org/)
+[![Build Status](https://img.shields.io/travis/xuexb/learn-mip/master.svg)](https://travis-ci.org/xuexb/learn-mip)
 
 ```bash
 # 安装依赖

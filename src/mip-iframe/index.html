@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html mip lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>mip-iframe</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://mipcache.bdstatic.com/static/v1/mip.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="canonical" href="https://xuexb.org/">
+    <style type="text/css" mip-custom>
+        h2 {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>mip-iframe</h1>
+    <p>
+        mip-iframe 是用来支持在 mip 中嵌入第三方内容的一种方式。
+    </p>
+
+    <h2>基本版本</h2>
+    <mip-iframe
+        allowfullscreen
+        src="./child.html"
+        width="400"
+        height="300"
+        allowtransparency="true">
+    </mip-iframe>
+
+    <h2>fixed-height</h2>
+    <mip-iframe
+        layout="fixed-height"
+        src="./child.html"
+        allowfullscreen
+        width="100"
+        height="300"
+        allowtransparency="true">
+    </mip-iframe>
+
+    <h2>srcdoc</h2>
+    <mip-iframe
+        allowfullscreen
+        srcdoc="
+            <div>You say that you love rain,</div>
+            <div>but you open your umbrella when it rains.</div>
+            <div>You say that you love the sun,</div>
+            <div>but you find a shadow spot when the sun shines.</div>
+            <div>You say that you love the wind,</div>
+            <div>but you close your windows when wind blows.</div>
+            <div>This is why I am afraid,</div>
+            <div>because you say that you love me too.</div>
+            "
+        width="400"
+        height="300"
+        sandbox=""
+        allowtransparency="true">
+    </mip-iframe>
+
+    <script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
+</body>
+</html>
