@@ -1,7 +1,5 @@
 # learn-mip
 
-学习mip的例子
-
 [![mip](https://img.shields.io/badge/Thanks-MIP-brightgreen.svg)](https://www.mipengine.org/)
 [![Build Status](https://img.shields.io/travis/xuexb/learn-mip/master.svg)](https://travis-ci.org/xuexb/learn-mip)
 
@@ -36,3 +34,9 @@ npm run validator
 - [ ] 页面代码自动规范检查
 - [ ] 页面错误智能提示
 - [ ] 页面错误字符标记颜色
+
+## thanks
+
+- [百度MIP](https://www.mipengine.org/)
+- [codemirror](http://codemirror.net/)
+- [Wei](https://blog.whe.me/)
