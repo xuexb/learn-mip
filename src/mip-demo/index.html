@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html mip lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://mipcache.bdstatic.com/static/v1/mip.css">
+    <link rel="canonical" href="https://xuexb.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <style mip-custom="">
+    body {
+        margin: 10px;
+    }
+    .red-text {
+        color: red;
+    }
+    .middle-text {
+        text-align: center;
+    }
+    .small-pic {
+        max-width: 200px;
+    }
+    </style>
+</head>
+<body>
+    <p class="red-text">
+        我是红色的了.
+    </p>
+    <p class="middle-text">
+        我是居中的文字
+    </p>
+    <hr>
+    <p class="middle-text">
+        &lt;mip-img&gt; 图片组件
+    </p>
+    <div class="small-pic">
+        <mip-img layout="responsive" width="350" height="263" src="https://www.mipengine.org/static/img/mip_logo_3b722d7.png">
+            <p>
+                图片说明文字, 虽然我不知道这里是做啥的, 但还是写了~
+            </p>
+        </mip-img>
+    </div>
+
+    <p>
+        不出意外, 你会看到下面有个标尺~
+    </p>
+    <hr>
+
+    <!--分享组件-->
+    <p class="middle-text">
+        &lt;mip-share&gt; 分享组件
+    </p>
+    <mip-share title="分享：我的第一个MIP页面"></mip-share>
+
+    <hr>
+
+    <p class="middle-text">
+        &lt;mip-stats-baidu&gt; 百度统计组件，代码可见
+    </p>
+
+    <mip-stats-baidu token="4e397f684261b9e4ff9d8"></mip-stats-baidu>
+    <!--mip 运行环境-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
+    <!--分享组件 代码-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-share/mip-share.js"></script>
+    <!--百度统计组件 代码-->
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-stats-baidu/mip-stats-baidu.js"></script>
+</body>
+</html>
