@@ -1,7 +1,7 @@
 {
-  "name": "mip-examples",
+  "name": "learn-mip",
   "version": "1.0.0",
-  "description": "mip的使用例子",
+  "description": "学习mip的例子",
   "main": "index.js",
   "scripts": {
     "start": "http-server",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xuexb/mip-examples.git"
+    "url": "git+https://github.com/xuexb/learn-mip.git"
   },
   "author": "xuexb <fe.xiaowu@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xuexb/mip-examples/issues"
+    "url": "https://github.com/xuexb/learn-mip/issues"
   },
-  "homepage": "https://github.com/xuexb/mip-examples#readme",
+  "homepage": "https://github.com/xuexb/learn-mip#readme",
   "devDependencies": {
     "glob": "^7.1.2",
     "http-server": "^0.10.0",

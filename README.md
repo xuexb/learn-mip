@@ -1,8 +1,9 @@
-# mip-examples
+# learn-mip/
 
-mip的使用例子
+学习mip的例子
 
 ```bash
+# 安装依赖
 npm install
 
 # 启动 http-server 预览
