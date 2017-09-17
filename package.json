@@ -1,0 +1,25 @@
+{
+  "name": "mip-examples",
+  "version": "1.0.0",
+  "description": "mip的使用例子",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server",
+    "validator": "node validator.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuexb/mip-examples.git"
+  },
+  "author": "xuexb <fe.xiaowu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xuexb/mip-examples/issues"
+  },
+  "homepage": "https://github.com/xuexb/mip-examples#readme",
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "http-server": "^0.10.0",
+    "mip-validator": "^1.5.6"
+  }
+}
