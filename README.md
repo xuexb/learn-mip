@@ -39,4 +39,4 @@ npm run validator
 
 - [百度MIP](https://www.mipengine.org/)
 - [codemirror](http://codemirror.net/)
-- [Wei](https://blog.whe.me/)
+- [Wei](https://whe.me/)
