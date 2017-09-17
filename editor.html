@@ -10,7 +10,8 @@
     <script src="./deps/codemirror/lib/codemirror.js"></script>
     <script src="./deps/codemirror/mode/xml/xml.js"></script>
     <style>
-    body, html {
+    body,
+    html {
         margin: 0;
         padding: 0;
     }
@@ -25,15 +26,15 @@
         overflow: hidden;
     }
     .editor {
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
         width: 100%;
         padding-right: 430px;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
     }
     .preview {
         position: absolute;
-        right: 0;
         top: 0;
+        right: 0;
         width: 420px;
         min-height: 100%;
     }
@@ -44,14 +45,14 @@
     }
     @media screen and (max-width:768px) {
         .editor {
-            padding-right: 0;
             margin-bottom: 10px;
+            padding-right: 0;
         }
         .preview {
-            padding-bottom: 10px;
             position: static;
             width: auto;
             min-height: auto;
+            padding-bottom: 10px;
         }
     }
 
@@ -68,10 +69,12 @@
     <div class="header">
         <h1 class="title">在线预览</h1>
         <p>
-            这是一首简单的小情歌~ &copy; <a href="https://xuexb.com">前端小武</a> by <a href="https://github.com/xuexb/learn-mip">learn-mip</a>
+            这是一首简单的小情歌~ &copy;
+            <a href="https://xuexb.com">前端小武</a>
+            by
+            <a href="https://github.com/xuexb/learn-mip">learn-mip</a>
         </p>
     </div>
-
     <div class="wrap">
         <div class="editor">
             <textarea id="code" name="code">loading...</textarea>
@@ -80,24 +83,23 @@
             <iframe src="" scrolling="no" id="preview" frameborder="0"></iframe>
         </div>
     </div>
-
     <script>
     var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
         lineNumbers: true,
         lineWrapping: true,
         mode: 'text/html',
-        autoCloseTags: true,
+        autoCloseTags: true
     });
 
     var delay;
-    editor.on('change', function() {
+    editor.on('change', function () {
         clearTimeout(delay);
         delay = setTimeout(updatePreview, 300);
     });
 
     function updatePreview() {
         var previewFrame = document.getElementById('preview');
-        var preview =  previewFrame.contentDocument || previewFrame.contentWindow.document;
+        var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
         preview.open();
         preview.write(editor.getValue());
         previewFrame.contentWindow.onload = function () {
@@ -105,6 +107,7 @@
                 updateIframeHeight(preview.body.offsetHeight);
                 updateEditorHeight(preview.body.offsetHeight);
             }
+
         };
         preview.close();
     }
@@ -112,18 +115,25 @@
 
     function updateIframeHeight(height) {
         $('#preview').height(height);
-    };
+    }
 
-    function updateEditorHeight (iframeHeight) {
-        var height = $(window).height() - $('.header').height() - 20;;
+    function updateEditorHeight(iframeHeight) {
+        var height = $(window).height() - $('.header').height() - 20;
         if ($(window).width() < 768) {
             height = height / 2;
         }
+
         $('.CodeMirror').height(Math.max(iframeHeight || 0, height));
     }
     $(window).on('resize.editor', function () {
         updateEditorHeight();
     }).trigger('resize.editor');
+
+    function getRandomText() {
+        var arr = ['妹子', '少年', '哥们', '美少女战士', '啦啦啦'];
+        var index = Math.round(Math.random() * (arr.length - 1));
+        return arr[index];
+    }
 
     var ajaxurl = null;
     try {
@@ -141,9 +151,14 @@
             },
             error: function () {
                 editor.setValue('获取失败~');
+                updateEditorHeight();
             },
             timeout: 3000
         });
+    }
+    else {
+        editor.setValue('开始写代码吧, ' + getRandomText() + '~');
+        updateEditorHeight();
     }
     </script>
 </body>
