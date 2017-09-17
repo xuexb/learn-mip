@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html mip lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>noscript时显示页面</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://mipcache.bdstatic.com/static/v1/mip.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="canonical" href="https://xuexb.org/">
+    <noscript>
+        <div>
+            你禁用了 script脚本~
+        </div>
+        <style mip-officialrelease>
+            body {
+                -webkit-animation:none;
+                   -moz-animation:none;
+                    -ms-animation:none;
+                        animation:none
+            }
+        </style>
+    </noscript>
+</head>
+<body>
+    <h1>noscript</h1>
+    <p>
+        由于 mip 在 css 里默认让 body 内容隐藏, 在 js 里注册组件, 然后让 body 显示, 如果当 noscript 时需要手动的显示内容~
+    </p>
+    <p>
+        <mip-img
+            layout="responsive"
+            width="350"
+            height="263"
+            src="https://www.mipengine.org/static/img/mip_logo_3b722d7.png"></mip-img>
+    </p>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
+</body>
+</html>
