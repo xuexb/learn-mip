@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
     <link rel="stylesheet" href="./deps/codemirror/lib/codemirror.css">
     <script src="./deps/jquery-1.11.3.js"></script>
+    <script src="./deps/mip-validator.js"></script>
     <script src="./deps/codemirror/lib/codemirror.js"></script>
     <script src="./deps/codemirror/addon/edit/closetag.js"></script>
     <script src="./deps/codemirror/addon/fold/xml-fold.js"></script>
@@ -68,6 +69,20 @@
     .CodeMirror pre > * {
         text-indent: 0;
     }
+
+    /*lint*/
+    .lint-error {
+        padding: 2px 5px 3px;
+        background-color: #ffa;
+    }
+    .lint-error-icon {
+        margin-right: 7px;
+        padding: 0 3px;
+        font-weight: bold;
+        color: white;
+        border-radius: 50%;
+        background-color: red;
+    }
     </style>
 </head>
 <body>
@@ -89,6 +104,8 @@
         </div>
     </div>
     <script>
+    var validator = window.MIPValidator();
+
     var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
         lineNumbers: true,
         lineWrapping: true,
@@ -100,10 +117,10 @@
     var delay;
     editor.on('change', function () {
         clearTimeout(delay);
-        delay = setTimeout(updatePreview, 300);
+        delay = setTimeout(checkValidate, 300);
     });
 
-    function updatePreview() {
+    function checkValidate() {
         var previewFrame = document.getElementById('preview');
         var preview = previewFrame.contentDocument || previewFrame.contentWindow.document;
         preview.open();
@@ -116,8 +133,50 @@
 
         };
         preview.close();
+
+        updateHints();
     }
-    setTimeout(updatePreview, 300);
+    var widgets = [];
+    function updateHints() {
+        editor.operation(function () {
+            for (var i = 0; i < widgets.length; ++i) {
+                editor.removeLineWidget(widgets[i]);
+
+            }
+            widgets.length = 0;
+
+            var errors = validator.validate(editor.getValue());
+
+            for (var i = 0; i < errors.length; ++i) {
+                var err = errors[i];
+                if (!err || !err.message) {
+                    continue;
+                }
+
+                if (err.line === 0) {
+                    err.line = 1;
+                }
+
+                var msg = document.createElement('div');
+                var icon = msg.appendChild(document.createElement('span'));
+                icon.innerHTML = '!';
+                icon.className = 'lint-error-icon';
+                msg.appendChild(document.createTextNode(err.message));
+                msg.className = 'lint-error';
+                widgets.push(editor.addLineWidget(err.line - 1, msg, {
+                    coverGutter: false,
+                    noHScroll: true
+                }));
+
+            }
+        });
+        var info = editor.getScrollInfo();
+        var after = editor.charCoords({line: editor.getCursor().line + 1, ch: 0}, 'local').top;
+        if (info.top + info.clientHeight < after) {
+            editor.scrollTo(null, after - info.clientHeight + 3);
+        }
+    }
+    setTimeout(checkValidate, 300);
 
     function updateIframeHeight(height) {
         $('#preview').height(height);
@@ -135,37 +194,27 @@
         updateEditorHeight();
     }).trigger('resize.editor');
 
-    function getRandomText() {
-        var arr = ['妹子', '少年', '哥们', '美少女战士', '啦啦啦'];
-        var index = Math.round(Math.random() * (arr.length - 1));
-        return arr[index];
-    }
-
     var ajaxurl = null;
     try {
         ajaxurl = decodeURIComponent(location.search.substr(1));
     }
-    catch (e) {}
-    if (ajaxurl) {
-        $.ajax({
-            url: ajaxurl,
-            cache: false,
-            dataType: 'text',
-            success: function (data) {
-                editor.setValue(data);
-                updateEditorHeight();
-            },
-            error: function () {
-                editor.setValue('获取失败~');
-                updateEditorHeight();
-            },
-            timeout: 3000
-        });
+    catch (e) {
     }
-    else {
-        editor.setValue('开始写代码吧, ' + getRandomText() + '~');
-        updateEditorHeight();
-    }
+
+    $.ajax({
+        url: ajaxurl || 'src/hello-world/index.html',
+        cache: false,
+        dataType: 'text',
+        success: function (data) {
+            editor.setValue(data);
+            updateEditorHeight();
+        },
+        error: function () {
+            editor.setValue('获取失败~');
+            updateEditorHeight();
+        },
+        timeout: 3000
+    });
     </script>
 </body>
 </html>
