@@ -123,7 +123,7 @@
             这是一首简单的小情歌~ &copy;
             <a href="https://xuexb.com">前端小武</a>
             by
-            <a href="https://github.com/xuexb/learn-mip">learn-mip</a>
+            <a href="https://github.com/xuexb/learn-mip">learn-mip</a> ~ <a href="https://github.com/xuexb/learn-mip#rules" target="_blank">校验规则>></a>
         </p>
     </div>
     <div class="wrap">
@@ -207,7 +207,11 @@
                     $tip.append($icon).append($text);
 
                     if (err.rule.link) {
-                        $tip.append($('<a />').addClass('lint-error-more').text('Learn More >>').attr('href', err.rule.link));
+                        $tip.append($('<a />')
+                            .addClass('lint-error-more')
+                            .text('Learn More >>')
+                            .attr('target', '_blank')
+                            .attr('href', err.rule.link));
                     }
 
                     widgets.push(editor.addLineWidget(err.line - 1, $tip.get(0), {
