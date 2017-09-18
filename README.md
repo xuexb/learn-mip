@@ -5,6 +5,7 @@
 
 ## list
 
+- [在线编辑器](https://xuexb.github.io/learn-mip/editor.html) - 支持自动校验哦~
 - [hello-world](https://xuexb.github.io/learn-mip/src/hello-world) - [在线编辑](https://xuexb.github.io/learn-mip/editor.html?src/hello-world/index.html)
 - [mip-demo](https://xuexb.github.io/learn-mip/src/mip-demo) - [在线编辑](https://xuexb.github.io/learn-mip/editor.html?src/mip-demo/index.html)
 - [noscript](https://xuexb.github.io/learn-mip/src/noscript) - [在线编辑](https://xuexb.github.io/learn-mip/editor.html?src/noscript/index.html)
