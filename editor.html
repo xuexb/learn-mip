@@ -15,6 +15,30 @@
     <script src="./deps/codemirror/mode/javascript/javascript.js"></script>
     <script src="./deps/codemirror/mode/css/css.js"></script>
     <script src="./deps/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+
+    <!-- csslint -->
+    <script src="./deps/csslint.js"></script>
+
+    <!-- htmlhint -->
+    <script src="./deps/htmlhint/core.js"></script>
+    <script src="./deps/htmlhint/htmlparser.js"></script>
+    <script src="./deps/htmlhint/reporter.js"></script>
+
+    <!-- 标准验证 -->
+    <script src="./deps/htmlhint/mip/standard/doctype-html5.js"></script>
+    <script src="./deps/htmlhint/mip/standard/doctype-first.js"></script>
+    <script src="./deps/htmlhint/mip/standard/tag-pair.js"></script>
+
+    <!-- 建议 -->
+    <script src="./deps/htmlhint/mip/suggest/id-unique.js"></script>
+    <script src="./deps/htmlhint/mip/suggest/title-require.js"></script>
+    <script src="./deps/htmlhint/mip/suggest/h1-require.js"></script>
+    <script src="./deps/htmlhint/mip/suggest/alt-require.js"></script>
+    <script src="./deps/htmlhint/mip/suggest/id-class-ad-disabled.js"></script>
+
+
+    <!-- 其他库 -->
+    <script src="./deps/htmlhint/mip/other/csslint.js"></script>
     <style>
     body,
     html {
@@ -83,6 +107,13 @@
         border-radius: 50%;
         background-color: red;
     }
+    .lint-error-icon.warning {
+        background-color: #09f;
+    }
+    .lint-error-more {
+        margin-left: 10px;
+        display: inline-block;
+    }
     </style>
 </head>
 <body>
@@ -144,34 +175,74 @@
         editor.operation(function () {
             for (var i = 0; i < widgets.length; ++i) {
                 editor.removeLineWidget(widgets[i]);
-
             }
             widgets.length = 0;
 
-            var errors = validator.validate(editor.getValue());
+            // htmllint
+            (function () {
+                var errors = HTMLHint.verify(editor.getValue(), {
+                    'doctype-html5': true,
+                    'doctype-first': true,
+                    'tag-pair': true,
+                    'id-unique': true,
+                    'title-require': true,
+                    'alt-require': true,
+                    'id-class-ad-disabled': true,
+                    'h1-require': true,
+                    'csslint': {
+                        'display-property-grouping': true,
+                        'known-properties': true
+                    }
+                });
+                for (var i = 0; i < errors.length; ++i) {
+                    var err = errors[i];
+                    if (!err || !err.message) {
+                        continue;
+                    }
 
-            for (var i = 0; i < errors.length; ++i) {
-                var err = errors[i];
-                if (!err || !err.message) {
-                    continue;
+                    var $tip = $('<div />').addClass('lint-error');
+                    var $icon = $('<span />').addClass('lint-error-icon ' + err.type).text('!');
+                    var $text = $('<span />').addClass('lint-error-text').text(err.message);
+
+                    $tip.append($icon).append($text);
+
+                    if (err.rule.link) {
+                        $tip.append($('<a />').addClass('lint-error-more').text('Learn More >>').attr('href', err.rule.link));
+                    }
+
+                    widgets.push(editor.addLineWidget(err.line - 1, $tip.get(0), {
+                        coverGutter: false,
+                        noHScroll: true
+                    }));
                 }
+            })();
 
-                if (err.line === 0) {
-                    err.line = 1;
+            // mip-validator
+            (function () {
+                var errors = validator.validate(editor.getValue());
+
+                for (var i = 0; i < errors.length; ++i) {
+                    var err = errors[i];
+                    if (!err || !err.message) {
+                        continue;
+                    }
+
+                    if (err.line === 0) {
+                        err.line = 1;
+                    }
+
+                    var $tip = $('<div />').addClass('lint-error');
+                    var $icon = $('<span />').addClass('lint-error-icon ' + (err.type || '')).text('!');
+                    var $text = $('<span />').addClass('lint-error-text').text(err.message);
+
+                    $tip.append($icon).append($text);
+
+                    widgets.push(editor.addLineWidget(err.line - 1, $tip.get(0), {
+                        coverGutter: false,
+                        noHScroll: true
+                    }));
                 }
-
-                var msg = document.createElement('div');
-                var icon = msg.appendChild(document.createElement('span'));
-                icon.innerHTML = '!';
-                icon.className = 'lint-error-icon';
-                msg.appendChild(document.createTextNode(err.message));
-                msg.className = 'lint-error';
-                widgets.push(editor.addLineWidget(err.line - 1, msg, {
-                    coverGutter: false,
-                    noHScroll: true
-                }));
-
-            }
+            })();
         });
         var info = editor.getScrollInfo();
         var after = editor.charCoords({line: editor.getCursor().line + 1, ch: 0}, 'local').top;
