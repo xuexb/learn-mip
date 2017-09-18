@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="./deps/codemirror/lib/codemirror.css">
     <script src="./deps/jquery-1.11.3.js"></script>
     <script src="./deps/codemirror/lib/codemirror.js"></script>
+    <script src="./deps/codemirror/addon/edit/closetag.js"></script>
+    <script src="./deps/codemirror/addon/fold/xml-fold.js"></script>
     <script src="./deps/codemirror/mode/xml/xml.js"></script>
+    <script src="./deps/codemirror/mode/javascript/javascript.js"></script>
+    <script src="./deps/codemirror/mode/css/css.js"></script>
+    <script src="./deps/codemirror/mode/htmlmixed/htmlmixed.js"></script>
     <style>
     body,
     html {
@@ -88,7 +93,8 @@
         lineNumbers: true,
         lineWrapping: true,
         mode: 'text/html',
-        autoCloseTags: true
+        autoCloseTags: true,
+        indentUnit: 4
     });
 
     var delay;
