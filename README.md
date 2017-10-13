@@ -1,6 +1,6 @@
 # learn-mip
 
-[![mip](https://img.shields.io/badge/Thanks-MIP-brightgreen.svg)](https://www.mipengine.org/)
+[![mip](https://img.shields.io/badge/Powered%20by-MIP-brightgreen.svg)](https://www.mipengine.org/)
 [![Build Status](https://img.shields.io/travis/xuexb/learn-mip/master.svg)](https://travis-ci.org/xuexb/learn-mip)
 
 ## list
