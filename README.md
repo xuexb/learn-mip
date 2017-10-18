@@ -45,10 +45,6 @@ doctype 必须使用 html5 标准头部。
 
 图片标签建议使用 alt 属性。
 
-#### h1-require
-
-建议页面中添加 `<h1>` 标签。
-
 #### id-class-ad-disabled
 
 ID和类属性不建议使用 ad 关键字，它可能会被adblock软件阻止。
