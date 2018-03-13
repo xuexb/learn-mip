@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html mip lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>mip-toggle</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://mipcache.bdstatic.com/static/v1/mip.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="canonical" href="https://xuexb.github.io/learn-mip/src/mip-toggle/">
+    <style type="text/css" mip-custom>
+        .toast-container {
+            opacity: 0;
+            transition: 240ms opacity ease-in-out;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            background-color: rgba(0, 0, 0, .8);
+            color: #fff;
+            height: 48px;
+            line-height: 48px;
+            padding: 0 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .toast-container.toast-show {
+            opacity:1;
+        }
+        .toast-container.toast-bottom, .toast-container.toast-top {
+            transform: none;
+            width: 100%;
+            left: 0;
+            border-radius: 0;
+        }
+        .toast-container.toast-top {
+            top: 0;
+        }
+        .toast-container.toast-bottom {
+            top: unset;
+            bottom: 0;
+            transform: translate3d(0, 100%, 0);
+            transition: 240ms transform ease-in, 240ms opacity ease-in-out;
+        }
+        .toast-container.toast-bottom.toast-show {
+            transform: translate3d(0, 0, 0);
+        }
+
+
+
+        button {
+            height: 40px;
+            line-height: 40px;
+            background-color: #ccc;
+            border: none;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>mip-toggle</h1>
+    <p>
+        引用 mip-toggle 和样式实现 toast 效果。
+    </p>
+
+    <h2>基本版本</h2>
+    <button on="tap:demo-toast.show">Toast</button>
+    <mip-toggle id="demo-toast" class="toast-container" enterclass="toast-show" hidetimeout="3000">
+      <div class="toast-content">添加关注成功</div>
+    </mip-toggle>
+    <button on="tap:demo-toast2.show">头部 Toast</button>
+    <mip-toggle id="demo-toast2" class="toast-container toast-top" enterclass="toast-show" hidetimeout="3000">
+      <div class="toast-content">添加关注成功</div>
+    </mip-toggle>
+    <button on="tap:demo-toast3.show">底部 Toast</button>
+    <mip-toggle id="demo-toast3" class="toast-container toast-bottom" enterclass="toast-show" hidetimeout="3000">
+      <div class="toast-content">添加关注成功</div>
+    </mip-toggle>
+
+
+    <script src="https://mipcache.bdstatic.com/static/v1/mip.js"></script>
+    <script src="https://mipcache.bdstatic.com/static/v1/mip-toggle/mip-toggle.js"></script>
+</body>
+</html>
