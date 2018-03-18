@@ -5,39 +5,16 @@
     <title>在线预览MIP代码</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0">
-    <link rel="stylesheet" href="./deps/codemirror/lib/codemirror.css">
-    <script src="./deps/jquery-1.11.3.js"></script>
-    <script src="./deps/mip-validator.js"></script>
-    <script src="./deps/codemirror/lib/codemirror.js"></script>
-    <script src="./deps/codemirror/addon/edit/closetag.js"></script>
-    <script src="./deps/codemirror/addon/fold/xml-fold.js"></script>
-    <script src="./deps/codemirror/mode/xml/xml.js"></script>
-    <script src="./deps/codemirror/mode/javascript/javascript.js"></script>
-    <script src="./deps/codemirror/mode/css/css.js"></script>
-    <script src="./deps/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-
-    <!-- csslint -->
-    <script src="./deps/csslint.js"></script>
-
-    <!-- htmlhint -->
-    <script src="./deps/htmlhint/core.js"></script>
-    <script src="./deps/htmlhint/htmlparser.js"></script>
-    <script src="./deps/htmlhint/reporter.js"></script>
-
-    <!-- 标准验证 -->
-    <script src="./deps/htmlhint/mip/standard/doctype-html5.js"></script>
-    <script src="./deps/htmlhint/mip/standard/doctype-first.js"></script>
-    <script src="./deps/htmlhint/mip/standard/tag-pair.js"></script>
-
-    <!-- 建议 -->
-    <script src="./deps/htmlhint/mip/suggest/id-unique.js"></script>
-    <script src="./deps/htmlhint/mip/suggest/title-require.js"></script>
-    <script src="./deps/htmlhint/mip/suggest/alt-require.js"></script>
-    <script src="./deps/htmlhint/mip/suggest/id-class-ad-disabled.js"></script>
-
-
-    <!-- 其他库 -->
-    <script src="./deps/htmlhint/mip/other/csslint.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/codemirror/5.35.0/codemirror.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mip-validator/dist/mip-validator.min.js"></script>
+    <script src="https://cdn.bootcss.com/codemirror/5.35.0/codemirror.js"></script>
+    <script src="https://cdn.bootcss.com/codemirror/5.35.0/addon/edit/closetag.js"></script>
+    <script src="https://cdn.bootcss.com/codemirror/5.35.0/addon/fold/xml-fold.js"></script>
+    <script src="https://cdn.bootcss.com/codemirror/5.35.0/mode/xml/xml.js"></script>
+    <script src="https://cdn.bootcss.com/codemirror/5.35.0/mode/javascript/javascript.js"></script>
+    <script src="https://cdn.bootcss.com/codemirror/5.35.0/mode/css/css.js"></script>
+    <script src="https://cdn.bootcss.com/codemirror/5.35.0/mode/htmlmixed/htmlmixed.js"></script>
     <style>
     body,
     html {
@@ -176,49 +153,6 @@
                 editor.removeLineWidget(widgets[i]);
             }
             widgets.length = 0;
-
-            // htmllint
-            (function () {
-                var errors = HTMLHint.verify(editor.getValue(), {
-                    'doctype-html5': true,
-                    'doctype-first': true,
-                    'tag-pair': true,
-                    'id-unique': true,
-                    'title-require': true,
-                    'alt-require': true,
-                    'id-class-ad-disabled': true,
-                    'csslint': {
-                        'display-property-grouping': true,
-                        'known-properties': true
-                    }
-                });
-                for (var i = 0; i < errors.length; ++i) {
-                    var err = errors[i];
-                    if (!err || !err.message) {
-                        continue;
-                    }
-
-                    var $tip = $('<div />').addClass('lint-error');
-                    var $icon = $('<span />').addClass('lint-error-icon ' + err.type).text('!');
-                    var $text = $('<span />').addClass('lint-error-text').text(err.message);
-
-                    $tip.append($icon).append($text);
-
-                    if (err.rule.link) {
-                        $tip.append($('<a />')
-                            .addClass('lint-error-more')
-                            .text('Learn More >>')
-                            .attr('target', '_blank')
-                            .attr('href', err.rule.link));
-                    }
-
-                    widgets.push(editor.addLineWidget(err.line - 1, $tip.get(0), {
-                        coverGutter: false,
-                        noHScroll: true
-                    }));
-                }
-            })();
-
             // mip-validator
             (function () {
                 var errors = validator.validate(editor.getValue());
