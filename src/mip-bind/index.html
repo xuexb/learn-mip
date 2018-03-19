@@ -36,6 +36,10 @@
             width: 100px;
             height: 30px;
         }
+
+        #md4607 {
+            display: block
+        }
     </style>
     <noscript>
         <style mip-officialrelease="">
@@ -49,6 +53,9 @@
     </noscript>
 </head>
 <body>
+
+
+
     <h1>case1：操作 checked、readOnly</h1>
     <p>
         在没有用户主动点击元素时，切换正常，一旦用户操作元素后，切换失效。
@@ -65,11 +72,11 @@
     <mip-form url="https://xuexb.com">
         <p>
             单选按钮：
-            <input type="radio" m-bind:checked="checked" m-bind:readOnly="readOnly">
+            <input type="radio" m-bind:checked="checked" m-bind:readonly="readOnly">
         </p>
         <p>
             复选按钮：
-            <input type="checkbox" m-bind:checked="checked" m-bind:readOnly="readOnly">
+            <input type="checkbox" m-bind:checked="checked" m-bind:readonly="readOnly">
         </p>
     </mip-form>
     <p m-bind:class="className">
@@ -79,11 +86,12 @@
         <button class="btn2" on="tap:MIP.setData({className:'unchecked','checked':''})">
             取消
         </button>
-        <button style="display: block" on="tap:MIP.setData({readOnly:!m.readOnly})">禁用/启用</button>
+        <button on="tap:MIP.setData({readOnly:!m.readOnly})" id="md4607">
+            禁用/启用
+        </button>
     </p>
-
-
     <hr id="mae17a">
+
 
 
     <h1>case2：元素的 on:change 事件示例</h1>
@@ -98,9 +106,8 @@
         <input type="text" on="change:MIP.setData({text:DOM.value})">
         <h2 m-text="text"></h2>
     </mip-form>
-
-
     <hr id="m51aa3">
+
 
 
     <h1>case3：select 选中示例，不可用，需要使用 prop</h1>
