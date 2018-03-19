@@ -17,6 +17,8 @@
 - [mip-pix](https://xuexb.github.io/learn-mip/src/mip-pix) - [在线编辑](https://xuexb.github.io/learn-mip/editor.html?src/mip-pix/index.html)
 - [mip-video](https://xuexb.github.io/learn-mip/src/mip-video) - [在线编辑](https://xuexb.github.io/learn-mip/editor.html?src/mip-video/index.html)
 - [mip-sidebar](https://xuexb.github.io/learn-mip/src/mip-sidebar) - [在线编辑](https://xuexb.github.io/learn-mip/editor.html?src/mip-sidebar/index.html)
+- [mip-toggle](https://xuexb.github.io/learn-mip/src/mip-toggle) - [在线编辑](https://xuexb.github.io/learn-mip/editor.html?src/mip-toggle/index.html)
+- [mip-bind](https://xuexb.github.io/learn-mip/src/mip-bind) - [在线编辑](https://xuexb.github.io/learn-mip/editor.html?src/mip-bind/index.html)
 
 ## rules
 

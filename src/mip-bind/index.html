@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" mip="">
+<head>
+    <meta charset="UTF-8">
+    <title>mip-bind</title>
+    <link rel="canonical" href="https://www.mipengine.org/">
+    <link rel="stylesheet" href="https://c.mipcdn.com/static/v1/mip.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style mip-custom="">
+        p button {
+            width: 100px;
+            height: 30px;
+            display: none;
+        }
+
+        .unchecked .btn1 {
+            display: block;
+        }
+
+        .checked .btn2 {
+            display: block;
+        }
+
+        #mae17a {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        #m51aa3 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        form button {
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+    <noscript>
+        <style mip-officialrelease="">
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none;
+            }
+        </style>
+    </noscript>
+</head>
+<body>
+    <mip-data>
+        <script type="application/json">
+        {
+            "checked": "",
+            "className": "unchecked"
+        }
+        </script>
+    </mip-data>
+    <mip-form url="https://xuexb.com">
+        <p>
+            单选按钮：
+            <input type="radio" m-bind:checked="checked">
+        </p>
+        <p>
+            复选按钮：
+            <input type="checkbox" m-bind:checked="checked">
+        </p>
+    </mip-form>
+    <p m-bind:class="className">
+        <button class="btn1" on="tap:MIP.setData({className:'checked',checked:!m.checked})">
+            选中
+        </button>
+        <button class="btn2" on="tap:MIP.setData({className:'unchecked','checked':''})">
+            取消
+        </button>
+    </p>
+
+
+    <hr id="mae17a">
+
+
+    <mip-data>
+        <script type="application/json">
+        {
+            "text": "请输入文字到文本框并离开焦点"
+        }
+        </script>
+    </mip-data>
+    <mip-form url="https://xuexb.com">
+        <input type="text" on="change:MIP.setData({text:DOM.value})">
+        <h2 m-text="text"></h2>
+    </mip-form>
+
+
+    <hr id="m51aa3">
+
+
+    <mip-data>
+        <script type="application/json">
+        {
+            "selected": "1"
+        }
+        </script>
+    </mip-data>
+    <mip-form url="https://xuexb.com">
+        <select m-bind:value="selected">
+            <option value="1">
+                01
+            </option>
+            <option value="2">
+                02
+            </option>
+            <option value="3">
+                03
+            </option>
+        </select>
+        <p>
+            当前选中：
+            <span m-text="selected"></span>
+        </p>
+        <hr>
+        <button on="tap:MIP.setData({selected:1})" type="button">
+            选中1
+        </button>
+        <button on="tap:MIP.setData({selected:2})" type="button">
+            选中2
+        </button>
+        <button on="tap:MIP.setData({selected:3})" type="button">
+            选中3
+        </button>
+    </mip-form>
+    <script src="https://c.mipcdn.com/static/v1/mip-bind/mip-bind.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-form/mip-form.js"></script>
+</body>
+</html>
