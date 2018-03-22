@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html mip lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>mip-scrollbox</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://c.mipcdn.com/static/v1/mip.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="canonical" href="https://xuexb.github.io/learn-mip/src/mip-scrollbox/">
+    <style type="text/css" mip-custom>
+        h2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>mip-scrollbox</h1>
+    <h2>说明</h2>
+    <p>
+        使用 <a href="https://github.com/mipengine/mip-extensions/tree/master/src/mip-scrollbox">mip-scrollbox</a> 组件使用的原生 <code>scroll-x: auto</code> 滚动，在 iOS 中具有弹性滚动，效果迷人。
+    </p>
+
+    <h2>不换行文字链</h2>
+    <p>
+        通过 <code>white-space: nowrap;</code> 使文字不换行，然后整块自由撑开整屏。
+    </p>
+    <style>
+        .demo1 a {
+            display: block;
+            border: 1px solid #ccc;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            margin-right: 20px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+        .demo1 [data-item]:last-child a {
+            margin-right: 0;
+        }
+    </style>
+    <mip-scrollbox class="demo1" height="32" layout="fixed-height">
+        <div data-wrapper>
+            <div data-inner>
+                <div data-scroller>
+                    <div data-item>
+                        <a href="https://www.baidu.com">百度一下，你就知道。</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://www.mipengine.org">MIP 是移动网页加速器。</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://github.com/mipengine">MIP 的 GitHub 地址是： https://github.com/mipengine</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://github.com/mipengine">MIP 的 GitHub 地址是： https://github.com/mipengine</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://github.com/mipengine">MIP 的 GitHub 地址是： https://github.com/mipengine</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://github.com/mipengine">MIP 的 GitHub 地址是： https://github.com/mipengine</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://github.com/mipengine">MIP 的 GitHub 地址是： https://github.com/mipengine</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://github.com/mipengine">MIP 的 GitHub 地址是： https://github.com/mipengine</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://www.mipengine.org">点击查看更多精彩内容>></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mip-scrollbox>
+
+
+    <h2>固定宽度换行链接</h2>
+    <p>
+        让内部容器宽度一致，自由的撑开整屏
+    </p>
+    <style>
+        .demo2 [data-item] {
+            width: 100px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            height: 100px;
+            overflow: hidden;
+        }
+        .demo2 [data-item] a {
+            display: block;
+            height: 100px;
+            padding: 0 3px;
+            color: #555;
+        }
+        .demo2 [data-item]:last-child {
+            margin-right: 0;
+        }
+    </style>
+    <mip-scrollbox class="demo2" height="100" layout="fixed-height">
+        <div data-wrapper>
+            <div data-inner>
+                <div data-scroller>
+                    <div data-item>
+                        <a href="https://www.mipengine.org">使用 MIP 无需等待加载，页面内容将以更友好的方式瞬时到达用户。</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://www.mipengine.org">MIP 提供实用、强大的基础组件，开发者可根据需求任意选择。</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://www.mipengine.org">MIP 是一项永久的开源计划，提供持续优化的解决方案。</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://www.mipengine.org">MIP 语法基于 HTML 并提供详细的示例，开发者仅需做简单开发。</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://www.mipengine.org">MIP（Mobile Instant Pages - 移动网页加速器），是一套应用于移动网页的开放性技术标准。通过提供 MIP HTML 规范、MIP-JS 运行环境以及 MIP-Cache 页面缓存系统，实现移动网页加速。</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://www.mipengine.org">MIP HTML 规范中有两类标签，一类是 HTML 常规标签，另一类是 MIP 标签。MIP 标签也被称作 MIP HTML 组件，使用它们来替代 HTML 常规标签可以大幅提升页面性能。</a>
+                    </div>
+                    <div data-item>
+                        <a href="https://www.mipengine.org">用户在访问 MIP 页面的时候，请求首先会发到 CDN 服务器，如果页面存在，则从 CDN 返回，如果 CDN 上不存在，则会请求第三方服务器。同时 MIP-Cache 服务器会将页面缓存到 CDN 上。</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mip-scrollbox>
+
+    <h2>栅格化</h2>
+    <p>
+        使用一行12列，去做栅格化。
+    </p>
+    <style>
+        .demo3 [data-item] > div {
+            height: 100px;
+            background-color: #ccc;
+        }
+    </style>
+    <mip-scrollbox data-type="row" class="demo3" layout="fixed-height">
+        <div data-wrapper>
+            <div data-inner>
+                <div data-scroller>
+                    <div data-item>
+                        <div>1的内容，span3</div>
+                    </div>
+                    <div data-item>
+                        <div>2的内容，span3</div>
+                    </div>
+                    <div data-item>
+                        <div>3的内容，span3</div>
+                    </div>
+                    <div data-item>
+                        <div>4的内容，span3</div>
+                    </div>
+                    <div data-item>
+                        <div>5的内容，span3</div>
+                    </div>
+                    <div data-item>
+                        <div>6的内容，span3</div>
+                    </div>
+                    <div data-item>
+                        <div>7的内容，span3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mip-scrollbox>
+
+    <h2>不规则栅格化</h2>
+    <p>
+        使用一行12列，去做栅格化，可以单独去设置每块的列数，效果迷人。
+    </p>
+    <style>
+        .demo4 [data-item] {
+            height: 100px;
+        }
+        .demo4 [data-item] a {
+            display: block;
+            height: 100px;
+            padding: 0 3px;
+            color: #555;
+            border: 1px solid #ccc;
+                    box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+    </style>
+    <mip-scrollbox data-type="row" class="demo4">
+        <div data-wrapper>
+            <div data-inner>
+                <div data-scroller>
+                    <div data-item data-col="6">
+                        <a href="https://www.mipengine.org">使用 MIP 无需等待加载，页面内容将以更友好的方式瞬时到达用户。</a>
+                    </div>
+                    <div data-item data-col="4">
+                        <a href="https://www.mipengine.org">MIP 提供实用、强大的基础组件，开发者可根据需求任意选择。</a>
+                    </div>
+                    <div data-item data-col="6">
+                        <a href="https://www.mipengine.org">MIP 是一项永久的开源计划，提供持续优化的解决方案。</a>
+                    </div>
+                    <div data-item data-col="4">
+                        <a href="https://www.mipengine.org">MIP 语法基于 HTML 并提供详细的示例，开发者仅需做简单开发。</a>
+                    </div>
+                    <div data-item data-col="6">
+                        <a href="https://www.mipengine.org">MIP（Mobile Instant Pages - 移动网页加速器），是一套应用于移动网页的开放性技术标准。通过提供 MIP HTML 规范、MIP-JS 运行环境以及 MIP-Cache 页面缓存系统，实现移动网页加速。</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mip-scrollbox>
+
+    <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-scrollbox/mip-scrollbox.js"></script>
+</body>
+</html>
