@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html mip="" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>mip 统计示例</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="canonical" href="https://www.mipengine.org/">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <style mip-custom>
+        h2 {
+            margin-top: 30px;
+        }
+    </style>
+    <noscript>
+        <style mip-officialrelease="">
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none;
+            }
+        </style>
+    </noscript>
+</head>
+<body>
+    <h1>mip-stats-baidu</h1>
+    <ul>
+        <li>
+            默认组件会扫描页面中的
+            <code>data-stats-baidu-obj</code>
+            元素，并解析里面的值去按需要发送，有
+            <code>load</code>
+            立即发送，还有
+            <code>click</code>
+            点击发送。
+        </li>
+        <li>
+            需要注意的是目前组件不会对未来元素（异步动态插入到页面中）进行数据处理，具体进展请看
+            <a href="https://github.com/mipengine/mip-extensions/issues/1077">https://github.com/mipengine/mip-extensions/issues/1077</a>
+        </li>
+        <li>
+            更多组件介绍请看
+            <a href="https://www.mipengine.org/examples/mip-extensions/mip-stats-baidu.html">https://www.mipengine.org/examples/mip-extensions/mip-stats-baidu.html</a>
+        </li>
+        <li>
+            是发 _trackEvent 还是发 _setCustomVar 且值具体发送什么，请参考百度统计的：<a href="http://tongji.baidu.com/open/api/more?p=ref_trackEvent">http://tongji.baidu.com/open/api/more?p=ref_trackEvent</a>
+        </li>
+    </ul>
+
+    <h2>示例 - load</h2>
+    <div data-stats-baidu-obj="%7B%22type%22%3A%22load%22%2C%22data%22%3A%5B%22_trackEvent%22%2C%22ad_pv%22%2C%22100%22%5D%7D">
+        <pre><code>data-stats-baidu-obj 的值是由下面得来：
+encodeURIComponent(JSON.stringify({
+    "type":"click",
+    "data":["_trackEvent", "ad_pv", "100"]
+});</code></pre>
+        <p>
+            请看控制台-网络请求，会发送一个百度统计日志，带有ad_pv的。
+        </p>
+    </div>
+
+    <h2>示例 - click</h2>
+    <div data-stats-baidu-obj="%7B%22type%22%3A%22click%22%2C%22data%22%3A%5B%22_trackEvent%22%2C%22ad_click%22%2C%22100%22%5D%7D">
+        <pre><code>data-stats-baidu-obj 的值是由下面得来：
+encodeURIComponent(JSON.stringify({
+    "type":"click",
+    "data":["_trackEvent", "ad_click", "100"]
+});</code></pre>
+        <p>
+            点击后，请看控制台-网络请求，会发送一个百度统计日志，带有ad_click的。
+        </p>
+    </div>
+
+    <mip-stats-baidu token="4e397f684261b9e4ff9d8ad4714f5b2b"></mip-stats-baidu>
+    <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-stats-baidu/mip-stats-baidu.js"></script>
+</body>
+</html>
