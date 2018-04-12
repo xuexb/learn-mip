@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html mip lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>mip-img popup 弹出效果示例</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="stylesheet" href="https://c.mipcdn.com/static/v1/mip.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="canonical" href="https://xuexb.com/">
+    <style type="text/css" mip-custom>
+        h2 {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>mip-img</h1>
+    <p>
+        此示例只是演示在 mip-img 组件中添加 popup 属性达到点击弹出效果。更多说明请看文档：<a href="https://www.mipengine.org/examples/mip/mip-img.html">https://www.mipengine.org/examples/mip/mip-img.html</a> 。
+    </p>
+
+
+    <h2>普通示例</h2>
+    <div>
+        <mip-img src="https://www.mipengine.org/static/img/sample_01.jpg" width="960" height="458" layout="container" popup></mip-img>
+    </div>
+
+    <h2>配合 mip-carousel</h2>
+    <div>
+        <mip-carousel
+            indicator
+            autoplay
+            layout="responsive"
+            width="600"
+            height="400">
+            <mip-img
+                popup
+                src="https://www.mipengine.org/static/img/sample_01.jpg">
+            </mip-img>
+            <mip-img
+                popup
+                src="https://www.mipengine.org/static/img/sample_02.jpg">
+            </mip-img>
+            <mip-img
+                popup
+                src="https://www.mipengine.org/static/img/sample_03.jpg">
+            </mip-img>
+        </mip-carousel>
+    </div>
+
+    <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+</body>
+</html>
